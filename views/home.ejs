@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgba(172, 170, 170, 0.322);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            @media screen and (max-width: 768px) {
+                padding: 40px;
+            }
+        }
+        .box{
+            
+            border: 2px solid black;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-align-center {
+            text-align: center;
+        }
+
+        .title {
+            margin: 110px 30px;
+        }
+
+        .label {
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        input {
+            padding: 10px 70px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .submitbtn {
+            padding: 12px 144px;
+            background-color: #222222;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+
+        .newurl {
+            margin-top: 50px;
+            font-size: 20px;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+
+            select,
+            textarea,
+            text,
+            input {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <h1 class="title text-align-center">URL Shortener</h1>
+        <div class="container flex">
+            <form method="post" action="/">
+                <div class="label text-align-center">Enter Real URL</div>
+                <div class="text-align-center">
+                    <input class="urlbox" type="text" name="url">
+                </div>
+                <div class="btndiv text-align-center">
+                    <button class="submitbtn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="text-align-center newurl">
+            <% if (locals.newUrl) { %>
+                <h3>New URL</h3>
+                <p>
+                    <%= newUrl %>
+                </p>
+                <% } %>
+
+                <% if (locals.error) { %>
+                    <h3>Get Error</h3>
+                    <p><%= error %></p>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
