@@ -8,6 +8,8 @@ const router = express.Router()
 
 router.get('/',handleHome)
 router.post('/',handleGenarateNewShortUrl)
+
+
 router.get('/:shortId',handleRedirect)
 
 module.exports = router
