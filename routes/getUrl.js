@@ -1,5 +1,5 @@
 const express = require('express')
-const {handleRedirect, handleHome,handleGenarateNewShortUrl} = require('../controllers/url')
+const {handleRedirect, handleHome,handleGenarateNewShortUrl,handleData} = require('../controllers/url')
 
 
 const router = express.Router()
@@ -9,7 +9,9 @@ const router = express.Router()
 router.get('/',handleHome)
 router.post('/',handleGenarateNewShortUrl)
 
+router.get('/data',handleData)
 
 router.get('/:shortId',handleRedirect)
+
 
 module.exports = router
