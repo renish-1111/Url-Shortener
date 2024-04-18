@@ -5,21 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 5px;
+            color: white;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            background: #001d3d;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 90px;
+            padding: 20px;
+            border: 2px solid;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+            width: 400px;
+            background: #000814;
+        }
+
+        label {
+            font-size: 30px;
+        }
+
+        input {
+            height: 30px;
+        }
+
+        button {
+            height: 40px;
+            margin-top: 20px;
+            font-size: 20px;
+            border-radius: 7px;
+            background: #ffc300;
+            color:black;
+        }
+
+        input {
+            color: black;
+        }
+
+        input::placeholder {
+            color: black;
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+
+            select,
+            textarea,
+            text,
+            input {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Login</h1>
 
     <form action="/user/login" method="post">
-        
+        <h1>Login</h1>
+
         <label for="email">Email</label>
+
         <input type="email" required name="email" placeholder="Enter your email">
         <label for="password">Password</label>
         <input type="password" required name="password" placeholder="Enter your password">
-        
+
         <button type="submit">Login</button>
+        <button type="button" onclick="window.location.href='/user/signup'">Create an account</button>
     </form>
-    <button type="button" onclick="window.location.href='/user/signup'">Register Now</button>
 </body>
 
 </html>

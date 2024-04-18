@@ -16,7 +16,7 @@ async function handleGenarateNewShortUrl(req, res) {
     })
 
 
-    res.render('home', { newUrl: `http://localhost:8000/url/${shortId}` })
+    res.render('home', { newUrl: `http://localhost:8000/${shortId}` })
 }
 async function handleRedirect(req, res) {
     const shortId = req.params.shortId
@@ -42,9 +42,7 @@ async function handleHome(req, res) {
 }
 async function handleData(req, res) {
     const user = req.user._id
-    console.log(user);
     const allUrl = await URL.find({createBy:user})
-    console.log(allUrl);
     return res.render('table', {
         urls: allUrl
     })

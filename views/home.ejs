@@ -6,67 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
-            background-color: rgba(172, 170, 170, 0.322);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            @media screen and (max-width: 768px) {
-                padding: 40px;
-            }
-        }
-        .box{
-            
-            border: 2px solid black;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-        }
-        .flex {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        * {
+            margin: 5px;
+            color: white;
         }
 
-        .text-align-center {
+        body {
+            display: flex;
+            justify-content: center;
+            background: #001d3d;
+        }
+
+        h1 {
             text-align: center;
         }
 
-        .title {
-            margin: 110px 30px;
+        form {
+            margin-top: 90px;
+            padding: 20px;
+            border: 2px solid;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+            width: 400px;
+            background: #000814;
         }
 
-        .label {
-            margin-bottom: 10px;
-            font-size: 25px;
+        label {
+            font-size: 30px;
         }
 
         input {
-            padding: 10px 70px;
-            border: 1px solid #000000;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            height: 30px;
         }
 
-        .submitbtn {
-            padding: 12px 144px;
-            background-color: #222222;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-
-        .newurl {
-            margin-top: 50px;
+        button {
+            height: 40px;
+            margin-top: 20px;
             font-size: 20px;
+            background: #ffc300;
+            color: black;
+        }
+
+        input {
+            color: black;
+        }
+
+        input::placeholder {
+            color: black;
         }
 
         @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -78,38 +66,48 @@
                 font-size: 16px;
             }
         }
+        .error{
+            text-align: center;
+            color: red;
+            font-size: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="box">
+    
 
-        <h1 class="title text-align-center">URL Shortener</h1>
-        <div class="container flex">
-            <form method="post" action="/url">
-                <div class="label text-align-center">Enter Real URL</div>
-                <div class="text-align-center">
-                    <input class="urlbox" type="text" name="url">
-                </div>
-                <div class="btndiv text-align-center">
-                    <button class="submitbtn" type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
-        <div class="text-align-center newurl">
-            <% if (locals.newUrl) { %>
-                <h3>New URL</h3>
-                <p>
-                    <%= newUrl %>
-                </p>
-                <% } %>
 
-                <% if (locals.error) { %>
-                    <h3>Get Error</h3>
-                    <p><%= error %></p>
-                <% } %>
-        </div>
-    </div>
+        <form method="post" action="/url">
+            <h1>URL Shortener</h1>
+            <label>Enter URL</label>
+            <input placeholder="Enter Your Url" class="urlbox" type="text" name="url">
+
+
+            <button type="submit">Submit</button>
+
+            <div class="error">
+                <% if (locals.newUrl) { %>
+                    <h3>New URL</h3>
+                    <p>
+                        <%= newUrl %>
+                    </p>
+                    <% } %>
+    
+                        <% if (locals.error) { %>
+                            <h3>Get Error</h3>
+                            <p class="error">
+                                <%= error %>
+                            </p>
+                            <% } %>
+            </div>
+            <button type="button" onclick="window.location.href='/url/data'">History</button>
+        </form>
+
+   
+
+
+
 </body>
 
 </html>

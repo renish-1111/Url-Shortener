@@ -3,7 +3,6 @@ const { connectMongoDB } = require('./connection')
 const cookieParser = require('cookie-parser')
 const { restricToUser } = require('./middlewares/auth')
 
-
 connectMongoDB("mongodb://localhost:27017/urlShorter")
     .then(() => { console.log("MongoDB is connected") })
     .catch((err) => { console.log("Error to connect with MongoDB:", err) })
@@ -13,6 +12,7 @@ const port = 8000
 
 const getUrlRouter = require('./routes/getUrl')
 const userRouter = require('./routes/user')
+const staticRouter = require('./routes/staticRouter')
 
 
 app.set('view engine', 'ejs');
@@ -23,5 +23,6 @@ app.use(cookieParser())
 
 app.use('/url', restricToUser ,getUrlRouter)
 app.use('/user', userRouter)
+app.use('/', staticRouter)
 
 app.listen(port,console.log(`Example app listening on port ${port}!\nhttp://localhost:8000/`))
