@@ -3,7 +3,7 @@ const { connectMongoDB } = require('./connection')
 const cookieParser = require('cookie-parser')
 const { restricToUser } = require('./middlewares/auth')
 
-connectMongoDB(MONGO_URL)
+connectMongoDB('mongodb+srv://ponkiyarenish:ponkiyarenish@cluster0.rgmv6ie.mongodb.net/?authMechanism=DEFAULT')
     .then(() => { console.log("MongoDB is connected") })
     .catch((err) => { console.log("Error to connect with MongoDB:", err) })
 
