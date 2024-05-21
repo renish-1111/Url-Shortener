@@ -8,7 +8,7 @@ connectMongoDB('mongodb+srv://ponkiyarenish:ponkiyarenish@cluster0.rgmv6ie.mongo
     .catch((err) => { console.log("Error to connect with MongoDB:", err) })
 
 const app = express()
-
+const port = process.env.PORT || 8000
 
 const getUrlRouter = require('./routes/getUrl')
 const userRouter = require('./routes/user')
